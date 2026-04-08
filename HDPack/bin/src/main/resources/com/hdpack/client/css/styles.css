@@ -1,0 +1,105 @@
+/* --- Global Colors & Fonts --- */
+.root {
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-background-color: #f8f9fa; /* Light Grey Background */
+    -fx-text-fill: #1e293b;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent #e2e8f0 transparent transparent; /* Right Border only */
+    -fx-border-width: 1px;
+}
+
+.brand-label {
+    -fx-text-fill: #3b82f6; /* Brand Blue */
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #64748b;
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 14px;
+    -fx-padding: 12 20;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: #f1f5f9;
+    -fx-text-fill: #1e293b;
+}
+
+.nav-button-selected {
+    -fx-background-color: #eff6ff; /* Light Blue Background */
+    -fx-text-fill: #3b82f6; /* Blue Text */
+    -fx-border-color: transparent transparent transparent #3b82f6;
+    -fx-border-width: 0 0 0 3px; /* Left Blue Bar */
+}
+
+/* --- Cards (White Boxes) --- */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);
+    -fx-padding: 20;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+    -fx-background-color: #2563eb; /* Primary Blue */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+.btn-primary:hover { -fx-background-color: #1d4ed8; }
+
+.btn-secondary {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 6px;
+    -fx-text-fill: #475569;
+}
+
+.btn-danger-outline {
+    -fx-background-color: #fef2f2;
+    -fx-text-fill: #ef4444;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+/* --- Status Pills (Badges) --- */
+.status-pill-green {
+    -fx-background-color: #dcfce7;
+    -fx-text-fill: #166534;
+    -fx-background-radius: 12px;
+    -fx-padding: 2 8;
+}
+
+.status-pill-yellow {
+    -fx-background-color: #fef9c3;
+    -fx-text-fill: #854d0e;
+    -fx-background-radius: 12px;
+    -fx-padding: 2 8;
+}
+
+.status-pill-blue {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #1e40af;
+    -fx-background-radius: 12px;
+    -fx-padding: 2 8;
+}
+
+/* --- Table View --- */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+.table-view .column-header {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 0 0 2 0;
+}

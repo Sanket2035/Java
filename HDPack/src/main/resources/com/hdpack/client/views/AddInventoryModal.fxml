@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+
+<VBox spacing="15" prefWidth="450" style="-fx-background-color: white; -fx-padding: 25;"
+      stylesheets="@../css/styles.css"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.hdpack.client.controllers.AddInventoryController">
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT">
+        <Label text="Add Inventory Item" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="✕" onAction="#closeModal"
+                style="-fx-background-color: transparent; -fx-font-size: 16px; -fx-cursor: hand; -fx-text-fill: #94a3b8;"/>
+    </HBox>
+
+    <Label style="-fx-border-color: #e2e8f0; -fx-border-width: 0 0 1 0;" minHeight="1" maxHeight="1"/>
+
+    <!-- Form Fields -->
+    <VBox spacing="5">
+        <Label text="Item Name" textFill="#64748b" style="-fx-font-size: 12px;"/>
+        <TextField fx:id="nameField" promptText="e.g., Glossy Sticker Paper" style="-fx-padding: 10;"/>
+    </VBox>
+
+    <VBox spacing="5">
+        <Label text="Category" textFill="#64748b" style="-fx-font-size: 12px;"/>
+        <ComboBox fx:id="categoryCombo" promptText="Select Category" prefWidth="400" style="-fx-padding: 5;"/>
+    </VBox>
+
+    <HBox spacing="15">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Quantity" textFill="#64748b" style="-fx-font-size: 12px;"/>
+            <TextField fx:id="qtyField" promptText="0" style="-fx-padding: 10;"/>
+        </VBox>
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Unit" textFill="#64748b" style="-fx-font-size: 12px;"/>
+            <TextField fx:id="unitField" promptText="e.g., sheets" style="-fx-padding: 10;"/>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="5">
+        <Label text="Minimum Stock Level" textFill="#64748b" style="-fx-font-size: 12px;"/>
+        <TextField fx:id="minStockField" promptText="0" style="-fx-padding: 10;"/>
+    </VBox>
+
+    <!-- Footer Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+        <Button text="Cancel" styleClass="btn-secondary" prefWidth="100" onAction="#closeModal"/>
+        <Button text="Add Item" styleClass="btn-primary" prefWidth="120" onAction="#saveItem"/>
+    </HBox>
+
+</VBox>

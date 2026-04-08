@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.FlowPane?>
+
+<VBox spacing="20" style="-fx-background-color: #f8f9fa;"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.hdpack.client.controllers.BillingController">
+
+    <padding><Insets top="30" right="30" bottom="30" left="30"/></padding>
+
+    <!-- Header -->
+    <Label text="Billing &amp; Invoices" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <!-- Search Bar -->
+    <HBox styleClass="card" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search completed jobs by brand or ID..."
+                   prefWidth="500" style="-fx-background-radius: 4; -fx-border-color: #e2e8f0; -fx-padding: 8;"/>
+    </HBox>
+
+    <!-- Billing Cards Container -->
+    <FlowPane fx:id="billingContainer" hgap="20" vgap="20">
+        <!-- Cards will be injected dynamically by BillingController -->
+    </FlowPane>
+
+</VBox>

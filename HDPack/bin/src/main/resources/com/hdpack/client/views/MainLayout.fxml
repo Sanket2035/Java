@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainBorderPane" prefHeight="800.0" prefWidth="1200.0"
+            stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.hdpack.client.controllers.MainLayoutController">
+
+    <left>
+        <VBox prefWidth="240.0" styleClass="sidebar" spacing="10">
+            <padding>
+                <Insets top="30" right="0" bottom="30" left="0"/>
+            </padding>
+
+            <!-- Brand -->
+            <VBox spacing="5">
+                <padding><Insets left="25" bottom="30"/></padding>
+                <Label text="StickerPrint Pro" styleClass="brand-label"/>
+                <Label text="Inventory &amp; Scheduling" textFill="#94a3b8" style="-fx-font-size: 12px;"/>
+            </VBox>
+
+            <!-- Navigation -->
+            <Button text="Dashboard" maxWidth="Infinity" styleClass="nav-button, nav-button-selected" onAction="#showDashboard"/>
+            <Button text="Inventory" maxWidth="Infinity" styleClass="nav-button" onAction="#showInventory"/>
+            <Button text="Job Scheduling" maxWidth="Infinity" styleClass="nav-button" onAction="#showJobs"/>
+            <Button text="Billing" maxWidth="Infinity" styleClass="nav-button" onAction="#showBilling"/>
+        </VBox>
+    </left>
+
+    <!-- Center content will be swapped dynamically -->
+    <center>
+        <!-- Default Content loaded via Controller -->
+    </center>
+</BorderPane>
