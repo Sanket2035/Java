@@ -1,0 +1,8 @@
+spring:
+  mongodb:
+    uri: mongodb+srv://sanket2035:SanketShinde@hdpack.mmps2dk.mongodb.net/CompanyDB?appName=HdPack
+    auto-index-creation: 
+
+  jackson:
+    serialization:
+      indent_output: true
