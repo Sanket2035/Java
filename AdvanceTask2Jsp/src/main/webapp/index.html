@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamPortal | Secure Gateway</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #7c3aed;
+            --text-main: #0f172a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .auth-container {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            min-height: 700px;
+        }
+
+        .auth-visual {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-form-section {
+            flex: 1;
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .brand-name {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .welcome-text h1 {
+            font-weight: 800;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            z-index: 2;
+            letter-spacing: -1px;
+        }
+
+        .nav-tabs {
+            border: none;
+            background: #f1f5f9;
+            padding: 6px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            border-radius: 12px;
+            color: #64748b;
+            font-weight: 600;
+            padding: 12px;
+            transition: 0.3s;
+        }
+
+        .nav-tabs .nav-link.active {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .input-group-text {
+            background: transparent;
+            border: 2px solid #f1f5f9;
+            border-right: none;
+            border-radius: 14px 0 0 14px;
+            color: #94a3b8;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #f1f5f9;
+            border-radius: 14px;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .input-group .form-control {
+            border-left: none;
+            border-radius: 0 14px 14px 0;
+            padding-left: 0;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: none;
+            background: #fff;
+        }
+        
+        .input-group:focus-within .input-group-text,
+        .input-group:focus-within .form-control {
+            border-color: var(--primary-color);
+        }
+
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 700;
+            border-radius: 14px;
+            padding: 14px;
+            border: none;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(79, 70, 229, 0.25);
+            color: white;
+        }
+
+        .circle-deco {
+            position: absolute;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            bottom: -150px; right: -150px;
+        }
+
+        @media (max-width: 991px) {
+            .auth-visual { display: none; }
+            .auth-container { max-width: 550px; min-height: auto; }
+            .auth-form-section { padding: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="auth-container">
+    <div class="auth-visual">
+        <div class="welcome-text">
+            <span class="badge bg-white text-primary mb-4 px-3 py-2 rounded-pill fw-bold shadow-sm">v3.0 Multi-Role</span>
+            <h1>One Portal.<br>Infinite Possibilities.</h1>
+            <p class="lead opacity-75 mt-3 fw-500">Secure access for Students, Trainers, and Administrators to manage learning and evaluate performance.</p>
+        </div>
+        <div class="circle-deco"></div>
+    </div>
+
+    <div class="auth-form-section">
+        <div class="brand-name"><i class="bi bi-hexagon-fill fs-4"></i> ExamPortal.</div>
+        
+        <ul class="nav nav-tabs nav-justified" id="authTab" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#login" type="button">Log In</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#register" type="button">Register</button>
+            </li>
+        </ul>
+
+        <div class="tab-content pt-2">
+            <div class="tab-pane fade show active" id="login">
+                <form action="LoginRouter.jsp" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Sign in as</label>
+                        <select name="role" class="form-select" required>
+                            <option value="student">Student</option>
+                            <option value="trainer">Trainer</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                            <input type="email" name="semail" class="form-control" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                            <input type="password" name="spass" class="form-control" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-submit">Sign In to Dashboard <i class="bi bi-arrow-right ms-2"></i></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="register">
+                <form id="registrationForm">
+                    <div class="mb-3">
+                        <label class="form-label">I am registering as a</label>
+                        <select name="role" id="regRole" class="form-select" onchange="updateCourseLabel()" required>
+                            <option value="student">Student</option>
+                            <option value="trainer">Trainer</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            <input type="text" name="sname" id="regName" class="form-control" placeholder="John Doe" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" id="courseLabel">Tech Domain</label>
+                        <select name="scourse" class="form-select">
+                            <option value="Full-Stack Java">Full-Stack Java</option>
+                            <option value="Docker">Docker</option>
+                            <option value="Kubernetes">Kubernetes</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                            <input type="email" name="semail" class="form-control" placeholder="email@example.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="spass" id="pass1" class="form-control" placeholder="••••••••" required>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label">Confirm</label>
+                            <input type="password" name="scpass" id="pass2" class="form-control" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-submit">Create My Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Toggle label based on role
+    function updateCourseLabel() {
+        const role = document.getElementById('regRole').value;
+        document.getElementById('courseLabel').innerText = (role === 'student') ? 'Tech Domain' : 'Teaching Specialization';
+    }
+
+    // Registration Handler - Sends data to backend immediately
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const p1 = document.getElementById('pass1').value;
+        const p2 = document.getElementById('pass2').value;
+        const role = document.getElementById('regRole').value;
+
+        // Basic frontend validation
+        if (p1 !== p2) {
+            Swal.fire({ icon: 'error', title: 'Mismatch', text: 'Passwords do not match!', confirmButtonColor: '#4f46e5' });
+            return;
+        }
+
+        // Direct routing to our processing files
+        this.action = (role === 'student') ? 'StudentRegistration.jsp' : 'TrainerRegistration.jsp';
+        this.method = 'POST';
+        this.submit(); // The backend will redirect back here with success/error parameters
+    });
+
+    // Check for Status Messages sent from backend JSPs
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const msg = urlParams.get('msg');
+        const error = urlParams.get('error');
+
+        // Success Handlers
+        if (msg === 'registered') {
+            Swal.fire({ icon: 'success', title: 'Welcome!', text: 'Registration successful. You can now log in.', confirmButtonColor: '#4f46e5' });
+        } else if (msg === 'trainer_pending') {
+            Swal.fire({ icon: 'success', title: 'Application Submitted!', text: 'Your request has been sent to the Admin for approval. You can login once approved.', confirmButtonColor: '#4f46e5' });
+        } else if (urlParams.get('status') === 'loggedout') {
+            Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Logged out successfully', showConfirmButton: false, timer: 3000 });
+        }
+        
+        // Error Handlers
+        if (error === 'invalid') {
+            Swal.fire({ icon: 'error', title: 'Login Failed', text: 'Invalid Email or Password. Please try again.', confirmButtonColor: '#4f46e5' });
+        } else if (error === 'pending') {
+            Swal.fire({ icon: 'info', title: 'Approval Pending', text: 'An administrator needs to verify your trainer account before you can log in.', confirmButtonColor: '#4f46e5' });
+        } else if (error === 'email_exists') {
+            Swal.fire({ icon: 'error', title: 'Registration Error', text: 'This email is already registered to an account!', confirmButtonColor: '#4f46e5' });
+        } else if (error === 'password_mismatch') {
+            Swal.fire({ icon: 'error', title: 'Error', text: 'Passwords did not match. Please try again.', confirmButtonColor: '#4f46e5' });
+        } else if (error === 'system_error' || error === 'registration_failed') {
+            Swal.fire({ icon: 'error', title: 'System Error', text: 'Something went wrong on our end. Please try again later.', confirmButtonColor: '#4f46e5' });
+        }
+        
+        // Clean up the URL so the alerts don't show up again if the user refreshes
+        if(msg || error || urlParams.get('status')) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    };
+</script>
+</body>
+</html>
