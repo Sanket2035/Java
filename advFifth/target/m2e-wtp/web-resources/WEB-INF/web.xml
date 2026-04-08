@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Student Management System - Web Application Configuration
+
+    This web.xml file configures the Java Servlet-based Student Management System.
+    It defines servlet mappings, initialization parameters, and welcome files.
+
+    Configuration Overview:
+    =======================
+    1. StudentServlet - Main controller servlet handling all CRUD operations
+    2. URL Mapping - All requests to /student/* are routed to StudentServlet
+    3. Welcome File - index.jsp is the default landing page
+    4. Session Timeout - 30 minutes of inactivity
+
+    @author Developer
+    @version 1.0
+    @since 2026
+-->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!--
+        ==================== APPLICATION METADATA ====================
+    -->
+
+    <!-- Display name shown in admin consoles and management interfaces -->
+    <display-name>Student Management System</display-name>
+
+    <!--
+        Application description for documentation purposes.
+        This project demonstrates CRUD operations using Java Servlets and JSP.
+    -->
+    <description>
+        A web-based student management system built with Java Servlets and JSP.
+        Features include:
+        - Register new students
+        - View all registered students
+        - Edit student information
+        - Delete student records
+
+        Technology Stack:
+        - Java Servlets (Controller)
+        - JSP with JSTL (View)
+        - JDBC with PostgreSQL (Model/Database)
+        - Traditional MVC Architecture
+    </description>
+
+    <!--
+        ==================== SERVLET CONFIGURATION ====================
+    -->
+
+    <!--
+        StudentServlet - Main Controller
+
+        This servlet handles all HTTP requests for student management operations.
+        It implements the Front Controller pattern, routing requests based on
+        the 'action' parameter.
+
+        Supported Actions:
+        - action=view    : Display all students
+        - action=add     : Show registration form (GET) or add student (POST)
+        - action=edit    : Show edit form for a specific student
+        - action=update  : Update student information (POST)
+        - action=delete  : Delete a student by ID
+
+        @see com.servletstudent.controller.StudentServlet
+    -->
+    <servlet>
+        <!--
+            Servlet Name
+            Used to identify this servlet within the web.xml configuration
+        -->
+        <servlet-name>StudentServlet</servlet-name>
+
+        <!--
+            Servlet Class
+            Fully qualified class name of the servlet implementation
+        -->
+        <servlet-class>com.servletstudent.controller.StudentServlet</servlet-class>
+
+        <!--
+            Initialization Parameters
+            These parameters are passed to the servlet during initialization
+        -->
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+            <description>Character encoding for request/response processing</description>
+        </init-param>
+
+        <!--
+            Load on Startup
+            Value of 1 means this servlet is loaded when the application starts,
+            rather than waiting for the first request. This reduces initial
+            response time for the first user.
+        -->
+        <load-on-startup>1</load-on-startup>
+
+        <!--
+            Multipart Configuration
+            Enables file upload support (if needed in future enhancements)
+        -->
+        <multipart-config>
+            <max-file-size>10485760</max-file-size> <!-- 10 MB -->
+            <max-request-size>20971520</max-request-size> <!-- 20 MB -->
+        </multipart-config>
+    </servlet>
+
+    <!--
+        ==================== SERVLET MAPPING ====================
+    -->
+
+    <!--
+        URL Pattern Mapping for StudentServlet
+
+        All requests matching /student/* will be handled by StudentServlet.
+        Examples:
+        - /student?action=view
+        - /student?action=edit&id=5
+        - /student?action=add (POST)
+
+        The 'action' parameter determines which operation to perform.
+    -->
+    <servlet-mapping>
+        <!--
+            Servlet Name
+            Must match the servlet-name defined in the <servlet> element above
+        -->
+        <servlet-name>StudentServlet</servlet-name>
+
+        <!--
+            URL Pattern
+            Defines which request URLs this servlet will handle
+
+            Pattern explanation:
+            /student  - Exact match for the base path
+            All query parameters (?action=...) are passed to the servlet
+        -->
+        <url-pattern>/student</url-pattern>
+    </servlet-mapping>
+
+    <!--
+        ==================== WELCOME FILE LIST ====================
+    -->
+
+    <!--
+        Welcome Files
+        When a user accesses the root URL of the application, the container
+        will look for these files in order and serve the first one found.
+
+        index.jsp is the main landing page containing the student registration form.
+    -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--
+        ==================== SESSION CONFIGURATION ====================
+    -->
+
+    <!--
+        Session Timeout
+        Specifies the default session timeout interval in minutes.
+        If a user is inactive for this duration, their session will expire.
+
+        30 minutes is a reasonable default for most web applications.
+    -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <tracking-mode>COOKIE</tracking-mode>
+        <cookie-config>
+            <http-only>true</http-only>
+            <secure>false</secure>
+        </cookie-config>
+    </session-config>
+
+    <!--
+        ==================== ERROR PAGES ====================
+    -->
+
+    <!--
+        Error Page Configuration
+        Custom error pages provide better user experience when errors occur.
+    -->
+
+    <!-- Handle 404 Not Found errors -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/pages/error.jsp</location>
+    </error-page>
+
+    <!-- Handle 500 Internal Server Error -->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/pages/error.jsp</location>
+    </error-page>
+
+    <!-- Handle generic servlet exceptions -->
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/WEB-INF/pages/error.jsp</location>
+    </error-page>
+
+    <!--
+        ==================== MIME MAPPINGS ====================
+    -->
+
+    <!--
+        MIME Type Mappings
+        Ensures proper content-type headers for static resources
+    -->
+    <mime-mapping>
+        <extension>css</extension>
+        <mime-type>text/css</mime-type>
+    </mime-mapping>
+
+    <mime-mapping>
+        <extension>js</extension>
+        <mime-type>application/javascript</mime-type>
+    </mime-mapping>
+
+    <mime-mapping>
+        <extension>png</extension>
+        <mime-type>image/png</mime-type>
+    </mime-mapping>
+
+    <mime-mapping>
+        <extension>jpg</extension>
+        <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+
+    <mime-mapping>
+        <extension>ico</extension>
+        <mime-type>image/x-icon</mime-type>
+    </mime-mapping>
+
+    <!--
+        ==================== SECURITY (OPTIONAL) ====================
+    -->
+
+    <!--
+        Security constraints can be added here to protect certain URLs.
+        Example: Restrict access to admin pages for authenticated users only.
+
+        <security-constraint>
+            <web-resource-collection>
+                <web-resource-name>Admin Pages</web-resource-name>
+                <url-pattern>/admin/*</url-pattern>
+            </web-resource-collection>
+            <auth-constraint>
+                <role-name>admin</role-name>
+            </auth-constraint>
+        </security-constraint>
+    -->
+
+</web-app>

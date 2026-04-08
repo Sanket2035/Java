@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-25">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/sanke/Downloads/jmxtools-1.2.1/com.springsource.org.apache.commons.logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sanke/Downloads/jmxtools-1.2.1/com.springsource.org.apache.log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sanke/Downloads/jmxtools-1.2.1/jmxtools-1.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sanke/Downloads/jmxtools-1.2.1/org.springframework.asm-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sanke/Downloads/jmxtools-1.2.1/org.springframework.beans-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sanke/Downloads/jmxtools-1.2.1/org.springframework.context-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sanke/Downloads/jmxtools-1.2.1/org.springframework.core-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sanke/Downloads/jmxtools-1.2.1/org.springframework.expression-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sanke/Downloads/jmxtools-1.2.1/spring-dao-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sanke/Downloads/jmxtools-1.2.1/spring-jdbc-2.5.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

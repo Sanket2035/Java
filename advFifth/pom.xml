@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Student Management System - Maven POM File
+
+    This Maven project configuration defines the dependencies and build
+    settings for the Java Servlet-based Student Management System.
+
+    Project Structure:
+    - Model: Student.java (POJO)
+    - View: JSP pages with JSTL
+    - Controller: StudentServlet.java
+    - Database: PostgreSQL with JDBC
+
+    @author Developer
+    @version 1.0
+    @since 2026
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!-- Project Coordinates -->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.servletstudent</groupId>
+    <artifactId>student-management-system</artifactId>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
+
+    <!-- Project Information -->
+    <name>Student Management System</name>
+    <description>
+        A web-based student management system built with Java Servlets and JSP.
+        Demonstrates CRUD operations using traditional servlet-based architecture.
+    </description>
+    <url>https://github.com/yourusername/student-management-system</url>
+
+    <!--
+        ==================== DEPENDENCIES ====================
+    -->
+    <dependencies>
+
+        <!--
+            Java Servlet API
+            Scope: provided - The servlet container (Tomcat) provides this at runtime
+        -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--
+            JSP API
+            Required for compiling JSP-related code
+        -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.3</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--
+            JSTL (JavaServer Pages Standard Tag Library)
+            Provides custom tags for JSP pages (c:forEach, c:if, etc.)
+        -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <!--
+            PostgreSQL JDBC Driver
+            Enables database connectivity with PostgreSQL
+        -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.2</version>
+        </dependency>
+
+        <!--
+            JUnit Testing Framework
+            Scope: test - Only used during testing phase
+        -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <!--
+        ==================== BUILD CONFIGURATION ====================
+    -->
+    <build>
+        <!-- Final name of the generated WAR file -->
+        <finalName>student-management-system</finalName>
+
+        <!-- Plugin Management -->
+        <plugins>
+
+            <!--
+                Maven Compiler Plugin
+                Configures Java compilation settings
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!--
+                Maven WAR Plugin
+                Packages the application as a WAR file for deployment
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapp</directory>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+
+            <!--
+                Maven Tomcat Plugin
+                Allows running the application directly with 'mvn tomcat7:run'
+            -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8080</port>
+                    <path>/student-management</path>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <!--
+        ==================== PROFILES ====================
+    -->
+    <profiles>
+
+        <!-- Development Profile -->
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <environment>development</environment>
+            </properties>
+        </profile>
+
+        <!-- Production Profile -->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <environment>production</environment>
+            </properties>
+        </profile>
+
+    </profiles>
+
+    <!--
+        ==================== PROPERTIES ====================
+    -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+</project>
